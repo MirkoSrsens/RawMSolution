@@ -1,7 +1,9 @@
 Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Size,Build Seconds
-"D:/RawMSolution/RawMSolution/RawMSolution/Content/images/logo.png","D:/RawMSolution/RawMSolution/RawMSolution/Content/bin/DesktopGL/images/logo.xnb","TextureProcessor","Texture2DContent",9046,104965,0.2812465
-"D:/RawMSolution/RawMSolution/RawMSolution/Content/images/logo_trans.png","D:/RawMSolution/RawMSolution/RawMSolution/Content/bin/DesktopGL/images/logo_trans.xnb","TextureProcessor","Texture2DContent",8961,104965,0.0110101
-"D:/RawMSolution/RawMSolution/RawMSolution/Content/images/skullball.png","D:/RawMSolution/RawMSolution/RawMSolution/Content/bin/DesktopGL/images/skullball.xnb","TextureProcessor","Texture2DContent",91566,1080085,0.0250228
-"D:/RawMSolution/RawMSolution/RawMSolution/Content/images/threerings.png","D:/RawMSolution/RawMSolution/RawMSolution/Content/bin/DesktopGL/images/threerings.xnb","TextureProcessor","Texture2DContent",314970,1080085,0.0280256
-"D:/RawMSolution/RawMSolution/RawMSolution/Content/sound/start.wav","D:/RawMSolution/RawMSolution/RawMSolution/Content/bin/DesktopGL/sound/start.xnb","SoundEffectProcessor","SoundEffectContent",154454,154515,0.2232031
-"D:/RawMSolution/RawMSolution/RawMSolution/Content/sound/track.wav","D:/RawMSolution/RawMSolution/RawMSolution/Content/bin/DesktopGL/sound/track.xnb","SoundEffectProcessor","SoundEffectContent",705644,705705,0.1201092
+"D:/RMS/RawMSolution/Content/font/defaultFont.spritefont","D:/RMS/RawMSolution/Content/bin/DesktopGL/font/defaultFont.xnb","FontDescriptionProcessor","SpriteFontContent",2008,21521,0.2452237
+"D:/RMS/RawMSolution/Content/images/background.png","D:/RMS/RawMSolution/Content/bin/DesktopGL/images/background.xnb","TextureProcessor","Texture2DContent",4731,6739285,0.3883528
+"D:/RMS/RawMSolution/Content/images/logo.png","D:/RMS/RawMSolution/Content/bin/DesktopGL/images/logo.xnb","TextureProcessor","Texture2DContent",9046,104965,0.0180175
+"D:/RMS/RawMSolution/Content/images/logo_trans.png","D:/RMS/RawMSolution/Content/bin/DesktopGL/images/logo_trans.xnb","TextureProcessor","Texture2DContent",8961,104965,0.0110095
+"D:/RMS/RawMSolution/Content/images/skullball.png","D:/RMS/RawMSolution/Content/bin/DesktopGL/images/skullball.xnb","TextureProcessor","Texture2DContent",91566,1080085,0.0250226
+"D:/RMS/RawMSolution/Content/images/threerings.png","D:/RMS/RawMSolution/Content/bin/DesktopGL/images/threerings.xnb","TextureProcessor","Texture2DContent",314970,1080085,0.0300273
+"D:/RMS/RawMSolution/Content/sound/start.wav","D:/RMS/RawMSolution/Content/bin/DesktopGL/sound/start.xnb","SoundEffectProcessor","SoundEffectContent",154454,154515,0.1191085
+"D:/RMS/RawMSolution/Content/sound/track.wav","D:/RMS/RawMSolution/Content/bin/DesktopGL/sound/track.xnb","SoundEffectProcessor","SoundEffectContent",705644,705705,0.1126048

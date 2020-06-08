@@ -29,11 +29,12 @@ namespace Kernel.Design
 
         public abstract void Update(GameTime gameTime);
 
-        public void Destroy()
+        public virtual void Destroy()
         {
-            GameLoop.WaitingForDestruction.Enqueue(this);
+            GameLoop.Destroy(this);
             GameManager.singleton.gameObjects.Remove(this);
             this.gameObject.UnloadContent();
+            this.gameObject.Destroy();
         }
     }
 }

@@ -67,12 +67,17 @@ namespace Kernel.Components
                Vector2.Zero,
                1,
                SpriteEffects.None,
-               0);
+               spriteRenderer.OrderInLayer);
         }
 
         public override void UpdateReferences()
         {
             spriteRenderer = this.GameObject.GetComponent<SpriteRenderer>();
+        }
+
+        public override void Destroy()
+        {
+            this.GameObject.Components.Remove(this);
         }
     }
 }

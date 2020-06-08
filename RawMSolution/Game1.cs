@@ -55,8 +55,10 @@ namespace RawMSolution
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
+            new ScoreBox(GraphicsDevice);
             new Player(GraphicsDevice);
             new EnemySpawner(GraphicsDevice);
+            new Background(GraphicsDevice);
         }
 
         /// <summary>
@@ -78,10 +80,10 @@ namespace RawMSolution
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
             
+            GameLoop.UpdateObjects(gameTime);
             base.Update(gameTime);
 
 
-            GameLoop.UpdateObjects(gameTime);
         }
 
         /// <summary>
@@ -91,6 +93,7 @@ namespace RawMSolution
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
+
             spriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.AlphaBlend);
 
             GameLoop.Draw(spriteBatch);

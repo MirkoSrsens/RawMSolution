@@ -61,7 +61,7 @@ namespace RawMSolution.Objects
         {
             gameObject.AddComponent(new BoxCollider2D(0, 10, 10));
             //gameObject.AddComponent(new AudioSource(@"Content/sound/bgmusic.wav"));
-            gameObject.AddComponent(new SpriteRenderer(@"Content/images/threerings.png", new Point(75, 75), true));
+            gameObject.AddComponent(new SpriteRenderer(@"Content/images/threerings.png", new Point(75, 75), 1, true));
             gameObject.transform.Position = new Vector2(100, 100);
 
             //var audioSource = gameObject.GetComponent<AudioSource>();

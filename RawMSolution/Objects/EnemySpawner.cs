@@ -18,7 +18,7 @@ namespace RawMSolution.Objects
         int enemyMinSpeed = 2;
         int enemyMaxSpeed = 6;
 
-        int numberOfSpawns = 2;
+        int numberOfSpawns = 1;
 
         public EnemySpawner(GraphicsDevice graphicsDevice) : base(graphicsDevice)
         {
@@ -32,7 +32,7 @@ namespace RawMSolution.Objects
                 nextSpawnTime -= gameTime.ElapsedGameTime.Milliseconds;
                 if (nextSpawnTime < 0)
                 {
-                    var test = new TestObject(graphicsDevice, TypeOfEnemyMovement.ChasePlayer);
+                    var test = new TestObject(graphicsDevice,100, TypeOfEnemyMovement.Evade);
                     nextSpawnTime = rand.Next(enemySpawnMinMilliseconds, enemySpawnMaxMilliseconds);
 
                     var x = rand.Next(0, 1000);

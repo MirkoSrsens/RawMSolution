@@ -11,7 +11,7 @@ namespace Kernel
 
         public string Name { get; set; }
 
-        private List<Component> Components { get; set; }
+        internal List<Component> Components { get; set; }
 
         public GameObject()
         {
@@ -85,6 +85,11 @@ namespace Kernel
 
         public override void UpdateReferences()
         {
+        }
+
+        public override void Destroy()
+        {
+            this.Components = new List<Component>();
         }
     }
 }

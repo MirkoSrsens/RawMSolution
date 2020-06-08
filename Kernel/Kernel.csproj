@@ -49,6 +49,7 @@
     <Compile Include="Components\SpriteAnimation.cs" />
     <Compile Include="Components\Component.cs" />
     <Compile Include="Components\SpriteRenderer.cs" />
+    <Compile Include="Components\UI\Text.cs" />
     <Compile Include="Components\Transform.cs" />
     <Compile Include="Components\GameObject.cs" />
     <Compile Include="Design\MonoBehaviour.cs" />
@@ -58,5 +59,6 @@
     <Compile Include="Manager\GameManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

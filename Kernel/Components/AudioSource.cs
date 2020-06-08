@@ -51,5 +51,10 @@ namespace Kernel.Components
             this.SoundInstance = null;
             this.SoundSource = null;
         }
+
+        public override void Destroy()
+        {
+            this.GameObject.Components.Remove(this);
+        }
     }
 }

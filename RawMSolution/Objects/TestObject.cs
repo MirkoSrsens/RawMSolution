@@ -10,7 +10,8 @@ namespace RawMSolution.Objects
     public enum TypeOfEnemyMovement
     {
         Random,
-        ChasePlayer
+        ChasePlayer,
+        Evade
     }
 
     public class TestObject : MonoBehaviour
@@ -25,11 +26,14 @@ namespace RawMSolution.Objects
 
         public Player Player { get; set; }
 
-        public TestObject(GraphicsDevice graphicsDevice, TypeOfEnemyMovement typeOfMovement = TypeOfEnemyMovement.Random) : base(graphicsDevice)
+        public int ScoreValue { get; set; }
+
+        public TestObject(GraphicsDevice graphicsDevice, int scoreValue, TypeOfEnemyMovement typeOfMovement = TypeOfEnemyMovement.Random) : base(graphicsDevice)
         {
             rnd = new Random();
             direction = rnd.Next(0, 4);
             this.TypeOfMovement = typeOfMovement;
+            this.ScoreValue = scoreValue;
         }
 
         public override void Update(GameTime gameTime)
@@ -70,8 +74,26 @@ namespace RawMSolution.Objects
                     Player = GameManager.singleton.FindObjectByType<Player>();
                 }
             }
+            else if (TypeOfMovement == TypeOfEnemyMovement.Evade)
+            {
+                if (Player != null)
+                {
+                    if (Player.gameObject.transform.Position.X < gameObject.transform.Position.X)
+                        gameObject.transform.Position.X++;
+                    else if (Player.gameObject.transform.Position.X > gameObject.transform.Position.X)
+                        gameObject.transform.Position.X--;
+                    if (Player.gameObject.transform.Position.Y < gameObject.transform.Position.Y)
+                        gameObject.transform.Position.Y++;
+                    else if (Player.gameObject.transform.Position.Y > gameObject.transform.Position.Y)
+                        gameObject.transform.Position.Y--;
+                }
+                else
+                {
+                    Player = GameManager.singleton.FindObjectByType<Player>();
+                }
+            }
 
-            if(sprRen.IsOutOfBounds(Game1.singleton.Window.ClientBounds))
+            if (sprRen.IsOutOfBounds(Game1.singleton.Window.ClientBounds))
             {
                 Destroy();
             }
@@ -89,9 +111,10 @@ namespace RawMSolution.Objects
                 {
                     audioSource.Play();
                     Destroy();
+                    Manager.TotalScore += 100;
                 }
             };
-            sprRen = new SpriteRenderer("Content/images/skullball.png", new Point(75, 75), true);
+            sprRen = new SpriteRenderer("Content/images/skullball.png", new Point(75, 75), 1, true);
             gameObject.AddComponent(sprRen);
             gameObject.transform.Position = new Vector2(250, 250);
         }

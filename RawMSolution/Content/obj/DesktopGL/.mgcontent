@@ -4,14 +4,18 @@
   <Platform>DesktopGL</Platform>
   <Config />
   <SourceFiles>
-    <File>D:/RawMSolution/RawMSolution/RawMSolution/Content/images/logo.png</File>
-    <File>D:/RawMSolution/RawMSolution/RawMSolution/Content/images/logo_trans.png</File>
-    <File>D:/RawMSolution/RawMSolution/RawMSolution/Content/images/skullball.png</File>
-    <File>D:/RawMSolution/RawMSolution/RawMSolution/Content/images/threerings.png</File>
-    <File>D:/RawMSolution/RawMSolution/RawMSolution/Content/sound/start.wav</File>
-    <File>D:/RawMSolution/RawMSolution/RawMSolution/Content/sound/track.wav</File>
+    <File>D:/RMS/RawMSolution/Content/font/defaultFont.spritefont</File>
+    <File>D:/RMS/RawMSolution/Content/images/background.png</File>
+    <File>D:/RMS/RawMSolution/Content/images/logo.png</File>
+    <File>D:/RMS/RawMSolution/Content/images/logo_trans.png</File>
+    <File>D:/RMS/RawMSolution/Content/images/skullball.png</File>
+    <File>D:/RMS/RawMSolution/Content/images/threerings.png</File>
+    <File>D:/RMS/RawMSolution/Content/sound/start.wav</File>
+    <File>D:/RMS/RawMSolution/Content/sound/track.wav</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

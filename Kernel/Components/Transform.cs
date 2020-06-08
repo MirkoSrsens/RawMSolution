@@ -26,5 +26,10 @@ namespace Kernel.Components
         public override void UpdateReferences()
         {
         }
+
+        public override void Destroy()
+        {
+            this.GameObject.Components.Remove(this);
+        }
     }
 }

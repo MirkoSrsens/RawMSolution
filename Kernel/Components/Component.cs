@@ -16,5 +16,7 @@ namespace Kernel
         public abstract void Draw(SpriteBatch spriteBatch);
 
         public abstract void UpdateReferences();
+
+        public abstract void Destroy();
     }
 }

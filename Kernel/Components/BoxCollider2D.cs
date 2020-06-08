@@ -46,5 +46,10 @@ namespace Kernel.Components
         {
             this.spriteRenderer = null;
         }
+
+        public override void Destroy()
+        {
+            this.GameObject.Components.Remove(this);
+        }
     }
 }
