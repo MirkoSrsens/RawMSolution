@@ -36,25 +36,22 @@ namespace Kernel.Components
 
         public override void Update(GameTime gameTime)
         {
+            if (!Enabled) return;
         }
 
         public override void Draw(SpriteBatch spriteBatch)
         {
+            if (!Enabled || !Visiable) return;
         }
 
         public override void UpdateReferences()
         {
         }
 
-        public override void UnloadContent()
+        public override void Destroy()
         {
             this.SoundInstance = null;
             this.SoundSource = null;
-        }
-
-        public override void Destroy()
-        {
-            this.GameObject.Components.Remove(this);
         }
     }
 }

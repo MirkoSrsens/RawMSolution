@@ -1,9 +1,10 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System;
 
 namespace Kernel.Components
 {
-    public class SpriteAnimation : Component
+    public class SpriteAnimation : SpriteRenderer
     {
         private SpriteRenderer spriteRenderer { get; set; }
 
@@ -15,26 +16,32 @@ namespace Kernel.Components
 
         public Point CurrentFrame;
 
-        public SpriteAnimation(int millisecondsPerFrame, Point sheetSize, Point currentFrame = default(Point))
+        public SpriteAnimation(
+            int millisecondsPerFrame, 
+            string texturePath,
+            Point currentFrame = default(Point), 
+            Point size = default(Point), 
+            int orderInLayer = 0,
+            bool autoAnimation = false, 
+            Action<SpriteBatch> drawAction = null)
+            : base(texturePath, size, orderInLayer, drawAction)
         {
             this.millisecondsPerFrame = millisecondsPerFrame;
             this.timeSinceLastFrame = 0;
-            this.SheetSize = sheetSize;
             this.CurrentFrame = currentFrame;
         }
 
         public override void LoadContent(GraphicsDevice graphicsDevice)
         {
-        }
-
-        public override void UnloadContent()
-        {
-            this.spriteRenderer = null;
+            base.LoadContent(graphicsDevice);
+            this.SheetSize = new Point(Texture.Width / Size.X, Texture.Height / Size.Y);
         }
 
         public override void Update(GameTime gameTime)
         {
-                this.timeSinceLastFrame += gameTime.ElapsedGameTime.Milliseconds;
+            if (!Enabled) return;
+
+            this.timeSinceLastFrame += gameTime.ElapsedGameTime.Milliseconds;
 
                 if (this.timeSinceLastFrame > this.millisecondsPerFrame)
                 {
@@ -56,6 +63,8 @@ namespace Kernel.Components
 
         public override void Draw(SpriteBatch spriteBatch)
         {
+            if (!Enabled || !Visiable) return;
+
             spriteBatch.Draw(spriteRenderer.Texture,
                this.GameObject.transform.Position,
                new Rectangle(this.CurrentFrame.X * this.spriteRenderer.Size.X, 
@@ -77,7 +86,8 @@ namespace Kernel.Components
 
         public override void Destroy()
         {
-            this.GameObject.Components.Remove(this);
+            base.Destroy();
+            this.spriteRenderer = null;
         }
     }
 }

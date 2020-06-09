@@ -5,11 +5,19 @@ namespace Kernel
 {
     public abstract class Component
     {
+        public Component()
+        {
+            Enabled = true;
+            Visiable = true;
+        }
+
         public GameObject GameObject { get; set; }
 
-        public abstract void LoadContent(GraphicsDevice graphicsDevice);
+        public bool Enabled { get; set; }
 
-        public abstract void UnloadContent();
+        public bool Visiable { get; set; }
+
+        public abstract void LoadContent(GraphicsDevice graphicsDevice);
 
         public abstract void Update(GameTime gameTime);
 

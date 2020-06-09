@@ -46,6 +46,7 @@
     <Compile Include="Objects\Background.cs" />
     <Compile Include="Objects\EnemySpawner.cs" />
     <Compile Include="Objects\Enums\GameState.cs" />
+    <Compile Include="Objects\GameStateManager.cs" />
     <Compile Include="Objects\Manager.cs" />
     <Compile Include="Objects\Player.cs" />
     <Compile Include="Objects\ScoreBox.cs" />

@@ -18,7 +18,7 @@ namespace RawMSolution.Objects
         int enemyMinSpeed = 2;
         int enemyMaxSpeed = 6;
 
-        int numberOfSpawns = 1;
+        int numberOfSpawns = 100;
 
         public EnemySpawner(GraphicsDevice graphicsDevice) : base(graphicsDevice)
         {

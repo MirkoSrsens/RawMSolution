@@ -33,7 +33,6 @@ namespace Kernel.Design
         {
             GameLoop.Destroy(this);
             GameManager.singleton.gameObjects.Remove(this);
-            this.gameObject.UnloadContent();
             this.gameObject.Destroy();
         }
     }

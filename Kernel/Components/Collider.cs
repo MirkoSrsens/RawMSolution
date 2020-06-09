@@ -10,13 +10,15 @@ namespace Kernel.Components
     {
         public Layers Layer { get; set; }
 
-        protected static Dictionary<Collider, Rectangle> colliderPositions { get; set; }
+        protected static List<Collider> colliderPositions { get; set; }
+
+        public Rectangle rect { get; set; }
 
         public Action<Collider> OnCollisionEnter { get; set; }
 
         static Collider()
         {
-            colliderPositions = new Dictionary<Collider, Rectangle>();
+            colliderPositions = new List<Collider>();
         }
 
         public Collider(Layers layer = Layers.Layer1)
@@ -26,6 +28,7 @@ namespace Kernel.Components
 
         public override void Draw(SpriteBatch spriteBatch)
         {
+            if (!Enabled || !Visiable) return;
         }
 
         public override void LoadContent(GraphicsDevice graphicsDevice)
@@ -34,6 +37,7 @@ namespace Kernel.Components
 
         public override void Update(GameTime gameTime)
         {
+            if (!Enabled) return;
         }
 
         public override void UpdateReferences()
@@ -42,25 +46,33 @@ namespace Kernel.Components
 
         public void CheckCollision(Rectangle rect)
         {
-            foreach (var col in colliderPositions)
+
+            for(int i = colliderPositions.Count-1; i>= 0; i--)
             {
-                if (col.Key == this && col.Key.Layer == this.Layer)
+                var col = colliderPositions[i];
+
+                if (col == this && col.Layer == this.Layer)
                 {
                     continue;
                 }
 
-                if (colliderPositions[this].Intersects(col.Value))
+                if (this.rect.Intersects(col.rect))
                 {
                     if (OnCollisionEnter != null)
                     {
-                        OnCollisionEnter(col.Key);
+                        OnCollisionEnter(col);
                     }
-                    if (col.Key.OnCollisionEnter != null)
+                    if (col.OnCollisionEnter != null)
                     {
-                        col.Key.OnCollisionEnter(this);
+                        col.OnCollisionEnter(this);
                     }
                 }
             }
+        }
+
+        public override void Destroy()
+        {
+            colliderPositions.Remove(this);
         }
     }
 }

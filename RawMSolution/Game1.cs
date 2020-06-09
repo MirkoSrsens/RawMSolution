@@ -22,6 +22,7 @@ namespace RawMSolution
 
         private SoundEffect laserSound;
         private SoundEffectInstance laserSoundInstance;
+        private GameStateManager gameStateManager;
 
         public Game1()
         {
@@ -54,11 +55,8 @@ namespace RawMSolution
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
-
-            new ScoreBox(GraphicsDevice);
-            new Player(GraphicsDevice);
-            new EnemySpawner(GraphicsDevice);
-            new Background(GraphicsDevice);
+            gameStateManager = new GameStateManager(GraphicsDevice);
+            gameStateManager.state = Objects.Enums.GameState.InGame;
         }
 
         /// <summary>
@@ -79,10 +77,9 @@ namespace RawMSolution
         {
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
-            
-            GameLoop.UpdateObjects(gameTime);
-            base.Update(gameTime);
 
+            gameStateManager.Update(gameTime);
+            base.Update(gameTime);
 
         }
 
@@ -95,8 +92,7 @@ namespace RawMSolution
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             spriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.AlphaBlend);
-
-            GameLoop.Draw(spriteBatch);
+            gameStateManager.Draw(spriteBatch);
 
             spriteBatch.End();
             base.Draw(gameTime);

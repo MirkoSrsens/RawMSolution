@@ -16,23 +16,21 @@ namespace Kernel.Components
         {
             this.OffsetX = offsetX;
             this.OffsetY = offsetY;
+            colliderPositions.Add(this);
         }
 
         public override void Update(GameTime gameTime)
         {
-            if (!colliderPositions.ContainsKey(this))
-            {
-                colliderPositions.Add(this, new Rectangle());
-            }
+            if (!Enabled) return;
 
             var newRect = new Rectangle((int)this.GameObject.transform.Position.X + OffsetX,
                                  (int)this.GameObject.transform.Position.Y + OffsetY,
                                  spriteRenderer.Size.X - (OffsetX * 2),
                                  spriteRenderer.Size.Y - (OffsetY * 2));
 
-            if(newRect != colliderPositions[this])
+            if(newRect != rect)
             {
-                colliderPositions[this] = newRect;
+                rect = newRect;
                 CheckCollision(newRect);
             }
         }
@@ -42,14 +40,10 @@ namespace Kernel.Components
             spriteRenderer = this.GameObject.GetComponent<SpriteRenderer>();
         }
 
-        public override void UnloadContent()
-        {
-            this.spriteRenderer = null;
-        }
-
         public override void Destroy()
         {
-            this.GameObject.Components.Remove(this);
+            base.Destroy();
+            this.spriteRenderer = null;
         }
     }
 }

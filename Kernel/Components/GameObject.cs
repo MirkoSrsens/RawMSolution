@@ -34,15 +34,6 @@ namespace Kernel
             }
         }
 
-        public override void UnloadContent()
-        {
-            for (int i = 0; i < Components.Count; i++)
-            {
-                Components[i].UnloadContent();
-            }
-            Components.Clear();
-        }
-
         public TComponent GetComponent<TComponent>() where TComponent : Component
         {
             for(int i = 0; i< this.Components.Count; i++)
@@ -69,7 +60,9 @@ namespace Kernel
 
         public override void Update(GameTime gameTime)
         {
-            for(int i =0; i< Components.Count; i++)
+            if (!Enabled) return;
+
+            for (int i =0; i< Components.Count; i++)
             {
                 Components[i].Update(gameTime);
             }
@@ -77,6 +70,8 @@ namespace Kernel
 
         public override void Draw(SpriteBatch spriteBatch)
         {
+            if (!Enabled || !Visiable) return;
+
             for (int i = 0; i < Components.Count; i++)
             {
                 Components[i].Draw(spriteBatch);
@@ -89,7 +84,11 @@ namespace Kernel
 
         public override void Destroy()
         {
-            this.Components = new List<Component>();
+            for (int i = 0; i < Components.Count; i++)
+            {
+                Components[i].Destroy();
+            }
+            Components.Clear();
         }
     }
 }

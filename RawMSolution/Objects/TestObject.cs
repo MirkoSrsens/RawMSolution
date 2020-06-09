@@ -20,7 +20,7 @@ namespace RawMSolution.Objects
 
         private int direction { get; set; }
 
-        private SpriteRenderer sprRen { get; set; }
+        private SpriteAnimation sprAnim { get; set; }
 
         public TypeOfEnemyMovement TypeOfMovement { get; set; }
 
@@ -93,7 +93,7 @@ namespace RawMSolution.Objects
                 }
             }
 
-            if (sprRen.IsOutOfBounds(Game1.singleton.Window.ClientBounds))
+            if (sprAnim.IsOutOfBounds(Game1.singleton.Window.ClientBounds))
             {
                 Destroy();
             }
@@ -114,8 +114,8 @@ namespace RawMSolution.Objects
                     Manager.TotalScore += 100;
                 }
             };
-            sprRen = new SpriteRenderer("Content/images/skullball.png", new Point(75, 75), 1, true);
-            gameObject.AddComponent(sprRen);
+            sprAnim = new SpriteAnimation(50, "Content/images/skullball.png", new Point(0, 0), new Point(75, 75), 1, true);
+            gameObject.AddComponent(sprAnim);
             gameObject.transform.Position = new Vector2(250, 250);
         }
     }

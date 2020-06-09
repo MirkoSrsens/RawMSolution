@@ -32,10 +32,6 @@ namespace Kernel.Components.UI
         {
         }
 
-        public override void UnloadContent()
-        {
-        }
-
         public override void Update(GameTime gameTime)
         {
         }

@@ -8,7 +8,7 @@ namespace Kernel.Components
 {
     public class SpriteRenderer : Component
     {
-        private string TexturePath { get; set; }
+        protected string TexturePath { get; set; }
 
         public Texture2D Texture { get; set; }
 
@@ -20,11 +20,10 @@ namespace Kernel.Components
 
         public Action<SpriteBatch> DrawAction { get; set; } 
 
-        public SpriteRenderer(string texturePath, Point size = default(Point), int orderInLayer = 0, bool autoAnimation = false, Action<SpriteBatch> drawAction = null)
+        public SpriteRenderer(string texturePath, Point size = default(Point), int orderInLayer = 0, Action<SpriteBatch> drawAction = null)
         {
             this.TexturePath = texturePath;
             this.Size = size;
-            this.AutoAnimation = autoAnimation;
             this.DrawAction = drawAction;
             this.OrderInLayer = orderInLayer;
         }
@@ -35,30 +34,30 @@ namespace Kernel.Components
             {
                 Texture = Texture2D.FromStream(graphicsDevice, stream);
             }
-
-            if (AutoAnimation)
-            {
-                var x = Texture.Width / Size.X;
-                var y = Texture.Height / Size.Y;
-                this.GameObject.AddComponent(new SpriteAnimation(GameLoop.DefaultMillisecondsPerFrame, new Point(x, y)));
-            }
-        }
-
-        public override void UnloadContent()
-        {
-            this.Texture = null;
         }
 
         public override void Update(GameTime gameTime)
         {
+            if (!Enabled) return;
         }
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            if(DrawAction != null)
+            if (!Enabled || !Visiable) return;
+
+            if (DrawAction != null)
             {
                 DrawAction(spriteBatch);
             }
+            spriteBatch.Draw(Texture,
+               this.GameObject.transform.Position,
+               new Rectangle(0,0,Size.X,Size.Y),
+               Color.White,
+               0,
+               Vector2.Zero,
+               1,
+               SpriteEffects.None,
+               OrderInLayer);
         }
 
         public override void UpdateReferences()
@@ -85,7 +84,7 @@ namespace Kernel.Components
 
         public override void Destroy()
         {
-            this.GameObject.Components.Remove(this);
+            this.Texture = null;
         }
     }
 }
