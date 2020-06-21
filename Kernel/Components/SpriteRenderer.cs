@@ -50,7 +50,7 @@ namespace Kernel.Components
                 DrawAction(spriteBatch);
             }
             spriteBatch.Draw(Texture,
-               this.GameObject.transform.Position,
+               this.GameObject.transform.Position2D,
                new Rectangle(0,0,Size.X,Size.Y),
                Color.White,
                0,
@@ -71,10 +71,10 @@ namespace Kernel.Components
                 return true;
             }
 
-            if (this.GameObject.transform.Position.X < -Size.X ||
-            this.GameObject.transform.Position.X > clientRect.Width ||
-            this.GameObject.transform.Position.Y < -Size.Y ||
-            this.GameObject.transform.Position.Y > clientRect.Height)
+            if (this.GameObject.transform.Position2D.X < -Size.X ||
+            this.GameObject.transform.Position2D.X > clientRect.Width ||
+            this.GameObject.transform.Position2D.Y < -Size.Y ||
+            this.GameObject.transform.Position2D.Y > clientRect.Height)
             {
                 return true;
             }

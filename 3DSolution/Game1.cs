@@ -1,37 +1,25 @@
-﻿using Kernel;
-using Kernel.Components;
-using Kernel.Manager;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Audio;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using RawMSolution.Objects;
-using System.IO;
-using System.Threading.Tasks;
+using Solution.Objects;
 
-namespace RawMSolution
+namespace _3DSolution
 {
     /// <summary>
     /// This is the main type for your game.
     /// </summary>
     public class Game1 : Game
     {
-        public static Game1 singleton;
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
-
-        private SoundEffect laserSound;
-        private SoundEffectInstance laserSoundInstance;
-        public GameStateManager gameStateManager;
+        public static Game1 singleton;
+        public GameStateManager stateManager;
 
         public Game1()
         {
-            GameLoop.DefaultMillisecondsPerFrame = 50;
-            singleton = this;
             graphics = new GraphicsDeviceManager(this);
-            graphics.PreferredBackBufferHeight = 1000;
-            graphics.PreferredBackBufferWidth = 1200;
             Content.RootDirectory = "Content";
+            singleton = this;
         }
 
         /// <summary>
@@ -43,7 +31,7 @@ namespace RawMSolution
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
-            IsMouseVisible = true;
+
             base.Initialize();
         }
 
@@ -55,8 +43,9 @@ namespace RawMSolution
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
-            gameStateManager = new GameStateManager(GraphicsDevice);
-            //gameStateManager.state = Objects.Enums.GameState.InGame;
+            stateManager = new GameStateManager(GraphicsDevice);
+
+            // TODO: use this.Content to load your game content here
         }
 
         /// <summary>
@@ -78,9 +67,10 @@ namespace RawMSolution
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
-            gameStateManager.Update(gameTime);
-            base.Update(gameTime);
+            // TODO: Add your update logic here
+            stateManager.Update(gameTime);
 
+            base.Update(gameTime);
         }
 
         /// <summary>
@@ -91,10 +81,8 @@ namespace RawMSolution
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
-            spriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.AlphaBlend);
-            gameStateManager.Draw(spriteBatch);
+            // TODO: Add your drawing code here
 
-            spriteBatch.End();
             base.Draw(gameTime);
         }
     }

@@ -66,7 +66,7 @@ namespace Kernel.Components
             if (!Enabled || !Visiable) return;
 
             spriteBatch.Draw(spriteRenderer.Texture,
-               this.GameObject.transform.Position,
+               this.GameObject.transform.Position2D,
                new Rectangle(this.CurrentFrame.X * this.spriteRenderer.Size.X, 
                this.CurrentFrame.Y * this.spriteRenderer.Size.Y, 
                this.spriteRenderer.Size.X, 

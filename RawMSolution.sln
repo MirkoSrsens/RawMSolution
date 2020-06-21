@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RawMSolution", "RawMSolutio
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kernel", "Kernel\Kernel.csproj", "{A42D8E3A-B0FA-4A22-8182-0F2D4A3DB149}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "3DSolution", "3DSolution\3DSolution.csproj", "{BF625610-4B55-4097-B154-359D4439DD58}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{A42D8E3A-B0FA-4A22-8182-0F2D4A3DB149}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A42D8E3A-B0FA-4A22-8182-0F2D4A3DB149}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A42D8E3A-B0FA-4A22-8182-0F2D4A3DB149}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BF625610-4B55-4097-B154-359D4439DD58}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BF625610-4B55-4097-B154-359D4439DD58}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BF625610-4B55-4097-B154-359D4439DD58}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BF625610-4B55-4097-B154-359D4439DD58}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

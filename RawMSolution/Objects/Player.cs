@@ -22,37 +22,37 @@ namespace RawMSolution.Objects
         {
             if (InputController.GetKeyDown(Keys.A))
             {
-                gameObject.transform.Position.X -= speed;
+                gameObject.transform.Position2D.X -= speed;
             }
             if (InputController.GetKeyDown(Keys.D))
             {
-                gameObject.transform.Position.X += speed;
+                gameObject.transform.Position2D.X += speed;
             }
             if (InputController.GetKeyDown(Keys.W))
             {
-                gameObject.transform.Position.Y -= speed;
+                gameObject.transform.Position2D.Y -= speed;
             }
             if (InputController.GetKeyDown(Keys.S))
             {
-                gameObject.transform.Position.Y += speed;
+                gameObject.transform.Position2D.Y += speed;
             }
 
             if (InputController.IsMouseActive())
             {
-                gameObject.transform.Position = InputController.GetMousePosition();
+                gameObject.transform.Position2D = InputController.GetMousePosition();
             }
 
             var position = InputController.GetGamePadLeftStickPosition();
             if (InputController.GetGamePadKeyDown(Buttons.A))
             {
-                gameObject.transform.Position.X += speed * 2 * position.X;
-                gameObject.transform.Position.Y -= speed * 2 * position.Y;
+                gameObject.transform.Position2D.X += speed * 2 * position.X;
+                gameObject.transform.Position2D.Y -= speed * 2 * position.Y;
                 GamePad.SetVibration(PlayerIndex.One, 1f, 1f);
             }
             else
             {
-                gameObject.transform.Position.X += speed * position.X;
-                gameObject.transform.Position.Y -= speed * position.Y;
+                gameObject.transform.Position2D.X += speed * position.X;
+                gameObject.transform.Position2D.Y -= speed * position.Y;
                 GamePad.SetVibration(PlayerIndex.One, 0, 0);
             }
         }
@@ -62,7 +62,7 @@ namespace RawMSolution.Objects
             gameObject.AddComponent(new BoxCollider2D(0, 10, 10));
             //gameObject.AddComponent(new AudioSource(@"Content/sound/bgmusic.wav"));
             gameObject.AddComponent(new SpriteAnimation(50, @"Content/images/threerings.png",new Point(0,0), new Point(75, 75), 1, true));
-            gameObject.transform.Position = new Vector2(100, 100);
+            gameObject.transform.Position2D = new Vector2(100, 100);
 
             //var audioSource = gameObject.GetComponent<AudioSource>();
             //audioSource.SoundInstance.IsLooped = true;

@@ -48,11 +48,26 @@ namespace Kernel.Manager
             }
         }
 
+        public static void DestroyAll()
+        {
+            foreach (var mono in MonoBehaviours)
+            {
+                WaitingForDestruction.Enqueue(mono);
+            }
+        }
+
         public static void Draw(SpriteBatch spriteBatch)
         {
             foreach (var mono in MonoBehaviours)
             {
                 mono.gameObject.Draw(spriteBatch);
+            }
+        }
+
+        public static void Draw(GameTime spriteBatch)
+        {
+            foreach (var mono in MonoBehaviours)
+            {
             }
         }
     }

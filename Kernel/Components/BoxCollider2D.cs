@@ -23,8 +23,8 @@ namespace Kernel.Components
         {
             if (!Enabled) return;
 
-            var newRect = new Rectangle((int)this.GameObject.transform.Position.X + OffsetX,
-                                 (int)this.GameObject.transform.Position.Y + OffsetY,
+            var newRect = new Rectangle((int)this.GameObject.transform.Position2D.X + OffsetX,
+                                 (int)this.GameObject.transform.Position2D.Y + OffsetY,
                                  spriteRenderer.Size.X - (OffsetX * 2),
                                  spriteRenderer.Size.Y - (OffsetY * 2));
 

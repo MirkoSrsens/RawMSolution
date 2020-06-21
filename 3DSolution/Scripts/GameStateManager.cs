@@ -1,18 +1,11 @@
 ﻿using Kernel.Manager;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using RawMSolution.Objects.Enums;
 
-namespace RawMSolution.Objects
+namespace Solution.Objects
 {
     public class GameStateManager
     {
-        public GameState state { get; set; }
-
-        public MainMenu mainMenu { get; set; }
-
-        public TimerDisplay gameOverScreen { get; set; }
-
         public const int MaximumTime = 10000;
 
         public int timeLimit { get; set; }
@@ -22,25 +15,15 @@ namespace RawMSolution.Objects
         public GameStateManager(GraphicsDevice graphicsDevice)
         {
             this.graphicsDevice = graphicsDevice;
-            mainMenu = new MainMenu(graphicsDevice);
         }
 
         public void StartGame()
         {
-            mainMenu.Destroy();
-            state = GameState.InGame;
-            new ScoreBox(graphicsDevice);
-            new Player(graphicsDevice);
-            new EnemySpawner(graphicsDevice);
-            new Background(graphicsDevice);
-            new TimerDisplay(graphicsDevice);
         }
 
         public void GameOver()
         {
             GameLoop.DestroyAll();
-            new GameOverScreen(graphicsDevice);
-            state = GameState.GameOver;
         }
 
         public void Update(GameTime gameTime)
@@ -55,9 +38,9 @@ namespace RawMSolution.Objects
             GameLoop.UpdateObjects(gameTime);
         }
 
-        public void Draw(SpriteBatch spriteBatch)
+        public void Draw(GameTime gameTime)
         {
-            GameLoop.Draw(spriteBatch);
+            GameLoop.Draw(gameTime);
         }
     }
 }

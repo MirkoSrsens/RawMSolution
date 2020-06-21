@@ -43,16 +43,16 @@ namespace RawMSolution.Objects
                 switch (direction)
                 {
                     case 0:
-                        gameObject.transform.Position.X++;
+                        gameObject.transform.Position2D.X++;
                         break;
                     case 1:
-                        gameObject.transform.Position.X--;
+                        gameObject.transform.Position2D.X--;
                         break;
                     case 2:
-                        gameObject.transform.Position.Y++;
+                        gameObject.transform.Position2D.Y++;
                         break;
                     case 3:
-                        gameObject.transform.Position.Y--;
+                        gameObject.transform.Position2D.Y--;
                         break;
                 }
             }
@@ -60,14 +60,14 @@ namespace RawMSolution.Objects
             {
                 if(Player != null)
                 {
-                    if (Player.gameObject.transform.Position.X < gameObject.transform.Position.X)
-                        gameObject.transform.Position.X--;
-                    else if (Player.gameObject.transform.Position.X > gameObject.transform.Position.X)
-                        gameObject.transform.Position.X++;
-                    if (Player.gameObject.transform.Position.Y < gameObject.transform.Position.Y)
-                        gameObject.transform.Position.Y--;
-                    else if (Player.gameObject.transform.Position.Y > gameObject.transform.Position.Y)
-                        gameObject.transform.Position.Y++;
+                    if (Player.gameObject.transform.Position2D.X < gameObject.transform.Position2D.X)
+                        gameObject.transform.Position2D.X--;
+                    else if (Player.gameObject.transform.Position2D.X > gameObject.transform.Position2D.X)
+                        gameObject.transform.Position2D.X++;
+                    if (Player.gameObject.transform.Position2D.Y < gameObject.transform.Position2D.Y)
+                        gameObject.transform.Position2D.Y--;
+                    else if (Player.gameObject.transform.Position2D.Y > gameObject.transform.Position2D.Y)
+                        gameObject.transform.Position2D.Y++;
                 }
                 else
                 {
@@ -78,14 +78,14 @@ namespace RawMSolution.Objects
             {
                 if (Player != null)
                 {
-                    if (Player.gameObject.transform.Position.X < gameObject.transform.Position.X)
-                        gameObject.transform.Position.X++;
-                    else if (Player.gameObject.transform.Position.X > gameObject.transform.Position.X)
-                        gameObject.transform.Position.X--;
-                    if (Player.gameObject.transform.Position.Y < gameObject.transform.Position.Y)
-                        gameObject.transform.Position.Y++;
-                    else if (Player.gameObject.transform.Position.Y > gameObject.transform.Position.Y)
-                        gameObject.transform.Position.Y--;
+                    if (Player.gameObject.transform.Position2D.X < gameObject.transform.Position2D.X)
+                        gameObject.transform.Position2D.X++;
+                    else if (Player.gameObject.transform.Position2D.X > gameObject.transform.Position2D.X)
+                        gameObject.transform.Position2D.X--;
+                    if (Player.gameObject.transform.Position2D.Y < gameObject.transform.Position2D.Y)
+                        gameObject.transform.Position2D.Y++;
+                    else if (Player.gameObject.transform.Position2D.Y > gameObject.transform.Position2D.Y)
+                        gameObject.transform.Position2D.Y--;
                 }
                 else
                 {
@@ -116,7 +116,7 @@ namespace RawMSolution.Objects
             };
             sprAnim = new SpriteAnimation(50, "Content/images/skullball.png", new Point(0, 0), new Point(75, 75), 1, true);
             gameObject.AddComponent(sprAnim);
-            gameObject.transform.Position = new Vector2(250, 250);
+            gameObject.transform.Position2D = new Vector2(250, 250);
         }
     }
 }

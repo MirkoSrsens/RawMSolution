@@ -37,7 +37,7 @@ namespace RawMSolution.Objects
 
                     var x = rand.Next(0, 1000);
                     var y = rand.Next(0, 1000);
-                    test.gameObject.transform.Position = new Vector2(x, y);
+                    test.gameObject.transform.Position2D = new Vector2(x, y);
                     numberOfSpawns--;
                 }
             }

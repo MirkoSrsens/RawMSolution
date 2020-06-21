@@ -5,25 +5,26 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace RawMSolution.Objects
 {
-    public class ScoreBox : MonoBehaviour
+    public class TimerDisplay : MonoBehaviour
     {
-        Text text;
+        private Text text { get; set; }
 
-        public ScoreBox(GraphicsDevice graphicsDevice) : base(graphicsDevice)
+        public TimerDisplay(GraphicsDevice graphicsDevice) : base(graphicsDevice)
         {
         }
 
         public override void Update(GameTime gameTime)
         {
-            text.text = "Score" + Manager.TotalScore;
+            text.text = "Time left:" + (GameStateManager.MaximumTime - Game1.singleton.gameStateManager.timeLimit) / 1000;
         }
 
         protected override void InitComponents()
         {
             SpriteFont font = Game1.singleton.Content.Load<SpriteFont>("font/defaultFont");
             text = new Text(font);
+            text.text = "Time left:";
             this.gameObject.AddComponent(text);
-            this.gameObject.transform.Position2D = new Vector2(10, 10);
+            this.gameObject.transform.Position2D = new Vector2(Game1.singleton.Window.ClientBounds.Width - 120, 10);
         }
     }
 }

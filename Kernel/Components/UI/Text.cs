@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace Kernel.Components.UI
@@ -18,12 +12,13 @@ namespace Kernel.Components.UI
         public Text(SpriteFont font)
         {
             this.font = font;
+            this.text = string.Empty;
         }
 
         public override void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.DrawString(font, text,
-            this.GameObject.transform.Position, Color.DarkBlue, 0, Vector2.Zero,
+            this.GameObject.transform.Position2D, Color.DarkBlue, 0, Vector2.Zero,
             1, SpriteEffects.None, 1);
 
         }

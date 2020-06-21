@@ -5,7 +5,9 @@ namespace Kernel.Components
 {
     public class Transform : Component
     {
-        public Vector2 Position;
+        public Vector2 Position2D;
+
+        public Vector3 Position3D;
 
         public override void Draw(SpriteBatch spriteBatch)
         {
