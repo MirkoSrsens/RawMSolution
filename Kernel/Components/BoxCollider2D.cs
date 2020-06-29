@@ -25,8 +25,8 @@ namespace Kernel.Components
 
             var newRect = new Rectangle((int)this.GameObject.transform.Position2D.X + OffsetX,
                                  (int)this.GameObject.transform.Position2D.Y + OffsetY,
-                                 spriteRenderer.Size.X - (OffsetX * 2),
-                                 spriteRenderer.Size.Y - (OffsetY * 2));
+                                 spriteRenderer.NumberOfSprites.X - (OffsetX * 2),
+                                 spriteRenderer.NumberOfSprites.Y - (OffsetY * 2));
 
             if(newRect != rect)
             {

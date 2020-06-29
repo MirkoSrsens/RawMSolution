@@ -46,6 +46,7 @@ namespace _3DSolution
             stateManager = new GameStateManager(GraphicsDevice);
 
             // TODO: use this.Content to load your game content here
+
         }
 
         /// <summary>
@@ -82,7 +83,7 @@ namespace _3DSolution
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             // TODO: Add your drawing code here
-
+            stateManager.Draw(gameTime);
             base.Draw(gameTime);
         }
     }

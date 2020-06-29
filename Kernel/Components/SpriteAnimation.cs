@@ -34,7 +34,7 @@ namespace Kernel.Components
         public override void LoadContent(GraphicsDevice graphicsDevice)
         {
             base.LoadContent(graphicsDevice);
-            this.SheetSize = new Point(Texture.Width / Size.X, Texture.Height / Size.Y);
+            this.SheetSize = new Point(Texture.Width / NumberOfSprites.X, Texture.Height / NumberOfSprites.Y);
         }
 
         public override void Update(GameTime gameTime)
@@ -67,10 +67,10 @@ namespace Kernel.Components
 
             spriteBatch.Draw(spriteRenderer.Texture,
                this.GameObject.transform.Position2D,
-               new Rectangle(this.CurrentFrame.X * this.spriteRenderer.Size.X, 
-               this.CurrentFrame.Y * this.spriteRenderer.Size.Y, 
-               this.spriteRenderer.Size.X, 
-               this.spriteRenderer.Size.Y),
+               new Rectangle(this.CurrentFrame.X * this.spriteRenderer.NumberOfSprites.X, 
+               this.CurrentFrame.Y * this.spriteRenderer.NumberOfSprites.Y, 
+               this.spriteRenderer.NumberOfSprites.X, 
+               this.spriteRenderer.NumberOfSprites.Y),
                Color.White,
                0,
                Vector2.Zero,

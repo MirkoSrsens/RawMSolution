@@ -12,18 +12,26 @@ namespace Kernel.Components
 
         public Texture2D Texture { get; set; }
 
-        public Point Size { get; set; }
+        public Point NumberOfSprites { get; set; }
 
         public int OrderInLayer { get; set; }
 
         public readonly bool AutoAnimation;
 
-        public Action<SpriteBatch> DrawAction { get; set; } 
+        public Action<SpriteBatch> DrawAction { get; set; }
 
-        public SpriteRenderer(string texturePath, Point size = default(Point), int orderInLayer = 0, Action<SpriteBatch> drawAction = null)
+        public SpriteRenderer(string texturePath, Point numberOfSprites = default(Point), int orderInLayer = 0, Action<SpriteBatch> drawAction = null)
         {
             this.TexturePath = texturePath;
-            this.Size = size;
+
+            if (numberOfSprites == default(Point))
+            {
+                this.NumberOfSprites = new Point(1, 1);
+            }
+            else
+            {
+                this.NumberOfSprites = numberOfSprites;
+            }
             this.DrawAction = drawAction;
             this.OrderInLayer = orderInLayer;
         }
@@ -51,7 +59,7 @@ namespace Kernel.Components
             }
             spriteBatch.Draw(Texture,
                this.GameObject.transform.Position2D,
-               new Rectangle(0,0,Size.X,Size.Y),
+               new Rectangle(0,0,NumberOfSprites.X,NumberOfSprites.Y),
                Color.White,
                0,
                Vector2.Zero,
@@ -71,9 +79,9 @@ namespace Kernel.Components
                 return true;
             }
 
-            if (this.GameObject.transform.Position2D.X < -Size.X ||
+            if (this.GameObject.transform.Position2D.X < -NumberOfSprites.X ||
             this.GameObject.transform.Position2D.X > clientRect.Width ||
-            this.GameObject.transform.Position2D.Y < -Size.Y ||
+            this.GameObject.transform.Position2D.Y < -NumberOfSprites.Y ||
             this.GameObject.transform.Position2D.Y > clientRect.Height)
             {
                 return true;

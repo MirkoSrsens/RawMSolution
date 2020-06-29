@@ -5,8 +5,11 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace _3DSolution.Scripts
 {
-    class CameraObject : MonoBehaviour
+    public class CameraObject : MonoBehaviour
     {
+
+        public Camera camera { get; set; }
+
         public CameraObject(GraphicsDevice graphicsDevice) : base(graphicsDevice)
         {
         }
@@ -17,16 +20,17 @@ namespace _3DSolution.Scripts
 
         protected override void InitComponents()
         {
-            var camera = new Camera()
+            camera = new Camera()
             {
-                Target = new Vector3(0, 0, 5),
+                Target = Vector3.Zero,
                 AspectRation = (float)Game1.singleton.Window.ClientBounds.Width / (float)Game1.singleton.Window.ClientBounds.Height,
                 ClipNear = 1,
-                ClipFar = 100,
-                LookVector = Vector3.Up
+                ClipFar = 3000,
+                LookVector = Vector3.Up,
             };
-
             this.gameObject.AddComponent(camera);
+            camera.GameObject.transform.Position3D = new Vector3(0, 0, 5);
+
         }
     }
 }
