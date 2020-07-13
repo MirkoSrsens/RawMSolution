@@ -1,4 +1,5 @@
-﻿using Kernel.Design;
+﻿using Kernel.Components;
+using Kernel.Design;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
@@ -56,7 +57,7 @@ namespace Kernel.Manager
             }
         }
 
-        public static void Draw(SpriteBatch spriteBatch)
+        public static void Draw(SpriteBatch spriteBatch = null)
         {
             foreach (var mono in MonoBehaviours)
             {
@@ -64,10 +65,11 @@ namespace Kernel.Manager
             }
         }
 
-        public static void Draw(GameTime spriteBatch)
+        public static void Draw(Camera camera = null)
         {
             foreach (var mono in MonoBehaviours)
             {
+                mono.gameObject.Draw(null, camera);
             }
         }
     }

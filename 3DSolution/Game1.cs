@@ -20,6 +20,8 @@ namespace _3DSolution
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
             singleton = this;
+            graphics.PreferredBackBufferHeight = 1000;
+            graphics.PreferredBackBufferWidth = 1200;
         }
 
         /// <summary>
@@ -43,7 +45,7 @@ namespace _3DSolution
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
-            stateManager = new GameStateManager(GraphicsDevice);
+            stateManager = new GameStateManager(GraphicsDevice, this);
 
             // TODO: use this.Content to load your game content here
 

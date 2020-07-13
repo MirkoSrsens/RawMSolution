@@ -68,13 +68,13 @@ namespace Kernel
             }
         }
 
-        public override void Draw(SpriteBatch spriteBatch)
+        public override void Draw(SpriteBatch spriteBatch = null, Camera camera = null)
         {
             if (!Enabled || !Visiable) return;
 
             for (int i = 0; i < Components.Count; i++)
             {
-                Components[i].Draw(spriteBatch);
+                Components[i].Draw(spriteBatch, camera);
             }
         }
 

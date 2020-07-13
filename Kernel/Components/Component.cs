@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using Kernel.Components;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace Kernel
@@ -21,7 +22,7 @@ namespace Kernel
 
         public abstract void Update(GameTime gameTime);
 
-        public abstract void Draw(SpriteBatch spriteBatch);
+        public abstract void Draw(SpriteBatch spriteBatch = null, Camera camera = null);
 
         public abstract void UpdateReferences();
 

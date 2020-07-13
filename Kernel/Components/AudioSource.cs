@@ -39,7 +39,7 @@ namespace Kernel.Components
             if (!Enabled) return;
         }
 
-        public override void Draw(SpriteBatch spriteBatch)
+        public override void Draw(SpriteBatch spriteBatch = null, Camera camera = null)
         {
             if (!Enabled || !Visiable) return;
         }

@@ -9,7 +9,7 @@ namespace Kernel.Components
 
         public Vector3 Position3D;
 
-        public override void Draw(SpriteBatch spriteBatch)
+        public override void Draw(SpriteBatch spriteBatch = null, Camera camera = null)
         {
             if (!Enabled || !Visiable) return;
         }

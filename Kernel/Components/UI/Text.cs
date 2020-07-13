@@ -15,7 +15,7 @@ namespace Kernel.Components.UI
             this.text = string.Empty;
         }
 
-        public override void Draw(SpriteBatch spriteBatch)
+        public override void Draw(SpriteBatch spriteBatch = null, Camera camera = null)
         {
             spriteBatch.DrawString(font, text,
             this.GameObject.transform.Position2D, Color.DarkBlue, 0, Vector2.Zero,

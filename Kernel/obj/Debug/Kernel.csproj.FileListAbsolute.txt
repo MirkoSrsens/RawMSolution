@@ -35,8 +35,8 @@ D:\RMS\Kernel\bin\Debug\SharpDX.Direct3D11.xml
 D:\RMS\Kernel\bin\Debug\SharpDX.MediaFoundation.xml
 D:\RMS\Kernel\bin\Debug\SharpDX.Direct2D1.xml
 D:\RMS\Kernel\bin\Debug\SharpDX.XAudio2.xml
-D:\RMS\Kernel\obj\Debug\Kernel.csprojAssemblyReference.cache
 D:\RMS\Kernel\obj\Debug\Kernel.csproj.CoreCompileInputs.cache
 D:\RMS\Kernel\obj\Debug\Kernel.csproj.CopyComplete
 D:\RMS\Kernel\obj\Debug\Kernel.dll
 D:\RMS\Kernel\obj\Debug\Kernel.pdb
+D:\RMS\Kernel\obj\Debug\Kernel.csprojAssemblyReference.cache
