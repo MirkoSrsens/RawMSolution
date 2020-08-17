@@ -9,27 +9,25 @@ namespace Kernel.Components
     {
         public Matrix view { get; set; }
 
+        public Viewport viewPort { get; set; }
+
         public Matrix projection { get; set; }
 
         public Vector3 LookPoint { get; set; }
 
         public Vector3 Direction { get; set; }
 
-        public MouseState prevMouseState { get; set; }
-
         public Vector3 cameraUp { get; set; }
 
-        private readonly float totalYaw = MathHelper.PiOver4 / 2;
-        private float currentYaw = 0;
-        private readonly float totalPitch = MathHelper.PiOver4 / 2;
-        private float currentPitch = 0;
-
-        public Camera(int clipNear, int clipFar, float aspectRation)
+        public Camera(int clipNear, int clipFar, Viewport viewport)
         {
             projection = Matrix.CreatePerspectiveFieldOfView(MathHelper.PiOver2,
-                aspectRation,
+                (float)viewport.Width
+                /(float)viewport.Height,
                 clipNear,
                 clipFar);
+
+            this.viewPort = viewport;
         }
 
         public override void Destroy()
@@ -44,46 +42,11 @@ namespace Kernel.Components
         {
             Direction = LookPoint - this.GameObject.transform.Position3D;
             Direction.Normalize();
-
-            prevMouseState = Mouse.GetState();
             CreateLookAt();
         }
 
         public override void Update(GameTime gameTime)
         {
-            // Yaw
-            float yawAngle = (-MathHelper.PiOver4 / 1000) *
-                (Mouse.GetState().X - prevMouseState.X);
-
-            if(Math.Abs(currentYaw + yawAngle) < totalYaw)
-            {
-                Direction = Vector3.Transform(Direction,
-                    Matrix.CreateFromAxisAngle(cameraUp, yawAngle));
-
-                currentYaw += yawAngle;
-            }
-
-            ///ROLL
-            //cameraUp = Vector3.Transform(cameraUp,
-            //    Matrix.CreateFromAxisAngle(LookDirection, (MathHelper.PiOver4 / 45)));
-
-            /// Pitch
-
-            float pitchAngle = (MathHelper.PiOver4 / 1500) *
-                (Mouse.GetState().Y - prevMouseState.Y);
-
-            if (Math.Abs(currentPitch + pitchAngle) < totalPitch)
-            {
-                var directionNorm = Direction;
-                directionNorm.Normalize();
-                Direction = Vector3.Transform(Direction,
-                    Matrix.CreateFromAxisAngle(Vector3.Cross(cameraUp, directionNorm), pitchAngle));
-
-                currentPitch += pitchAngle;
-            }
-
-            prevMouseState = Mouse.GetState();
-
             CreateLookAt();
         }
 

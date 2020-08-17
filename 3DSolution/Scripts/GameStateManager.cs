@@ -1,32 +1,29 @@
 ﻿using _3DSolution;
 using _3DSolution.Scripts;
-using Kernel.Components;
 using Kernel.Manager;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
+using System;
 using System.Collections.Generic;
-using System.IO;
 
 namespace Solution.Objects
 {
     public class GameStateManager : DrawableGameComponent
     {
-        public const int MaximumTime = 10000;
-
-        public int timeLimit { get; set; }
-
         public GraphicsDevice graphicsDevice { get; set; } 
 
         public CameraObject camera { get; set; }
+
+        public EnemySpawner enemySpawner { get; set; }
 
         public GameStateManager(GraphicsDevice graphicsDevice, Game game)
             : base(game)
         {
             this.graphicsDevice = graphicsDevice;
             camera = new CameraObject(graphicsDevice);
+            enemySpawner = new EnemySpawner(camera.camera1, graphicsDevice);
+            new Bullets(enemySpawner, camera, graphicsDevice);
 
-            new Enemy(graphicsDevice, camera.camera);
         }
 
         public void StartGame()
@@ -40,6 +37,7 @@ namespace Solution.Objects
 
         public override void Update(GameTime gameTime)
         {
+
             GameLoop.UpdateObjects(gameTime);
 
             base.Update(gameTime);
@@ -47,8 +45,9 @@ namespace Solution.Objects
 
         public override void Draw(GameTime gameTime)
         {
-            GameLoop.Draw(camera.camera);
+            GameLoop.Draw(Game1.singleton.spriteBatch, camera.camera1);
             base.Draw(gameTime);
         }
+
     }
 }

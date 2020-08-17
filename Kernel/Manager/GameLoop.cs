@@ -57,19 +57,22 @@ namespace Kernel.Manager
             }
         }
 
-        public static void Draw(SpriteBatch spriteBatch = null)
+        public static void Draw(SpriteBatch spriteBatch = null, Camera camera = null)
         {
-            foreach (var mono in MonoBehaviours)
+            if(spriteBatch != null)
             {
-                mono.gameObject.Draw(spriteBatch);
+                spriteBatch.Begin();
             }
-        }
 
-        public static void Draw(Camera camera = null)
-        {
             foreach (var mono in MonoBehaviours)
             {
-                mono.gameObject.Draw(null, camera);
+                mono.gameObject.Draw(spriteBatch, camera);
+            }
+
+
+            if (spriteBatch != null)
+            {
+                spriteBatch.End();
             }
         }
     }

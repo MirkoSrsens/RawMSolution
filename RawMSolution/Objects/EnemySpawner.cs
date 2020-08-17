@@ -7,7 +7,7 @@ namespace RawMSolution.Objects
 {
     public class EnemySpawner : MonoBehaviour
     {
-        private Random rand { get; set; }
+        public Random rand { get; set; }
 
         private int enemySpawnMinMilliseconds = 300;
 

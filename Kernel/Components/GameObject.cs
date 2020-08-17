@@ -58,6 +58,17 @@ namespace Kernel
             }
         }
 
+        public void RemoveComponent(Component component)
+        {
+            this.Components.Remove(component);
+            component.Destroy();
+
+            for (int i = 0; i < Components.Count; i++)
+            {
+                this.Components[i].UpdateReferences();
+            }
+        }
+
         public override void Update(GameTime gameTime)
         {
             if (!Enabled) return;
